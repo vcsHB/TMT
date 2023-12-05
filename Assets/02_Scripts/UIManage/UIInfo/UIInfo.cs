@@ -1,7 +1,6 @@
 using System;
-using DG.Tweening;
+using UnityEngine.Tweening;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
@@ -27,7 +26,7 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     [Tooltip("움직이는 시간")]
     public float duration;
     [Tooltip("움직일 때 Easing 효과")]
-    public Ease EaseEffect = Ease.Linear;
+    public EasingType EaseEffect = EasingType.EaseInSine;
 
     [Tooltip("UI의 On/Off")]
     public bool onOff;
@@ -52,7 +51,7 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
 
         if (!onOff)
         {
-            UI_Transform.DOAnchorPos(TargetPos, duration);
+            UI_Transform.AnchorPos(TargetPos, duration);
             onOff = true;
         }
         else
