@@ -5,20 +5,12 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TextContent : TMPInfo
+public struct TextContent
 {
-    public int index;
     public string content;
-    public float duration;
+    public float term;
     public bool isReWrite;
 
-    public void TextPrint()
-    {
-        if (isReWrite)
-        {
-            AddWrite(content, duration);
-        }
-    }
 }
 
 /**
