@@ -5,6 +5,12 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+public struct ContentSegment
+{
+    public TextContent[] contents;
+    
+}
 public struct TextContent
 {
     public string content;

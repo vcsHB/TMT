@@ -51,12 +51,12 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
 
         if (!onOff)
         {
-            UI_Transform.AnchorPos(TargetPos, duration);
+            //UI_Transform.AnchorPos(TargetPos, duration);
             onOff = true;
         }
         else
         {
-            UI_Transform.DOAnchorPos(DefaultPos, duration);
+            //UI_Transform.DOAnchorPos(DefaultPos, duration);
             onOff = false;
         }
     }
@@ -69,7 +69,7 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     {
         if (!onOff)
         {
-            UI_Transform.DOAnchorPos(TargetPos, duration).SetEase(EaseEffect);
+            //UI_Transform.DOAnchorPos(TargetPos, duration).SetEase(EaseEffect);
             onOff = true;
         }
     }
@@ -83,7 +83,7 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     {
         if (onOff)
         {
-            UI_Transform.DOAnchorPos(DefaultPos, duration).SetEase(EaseEffect);
+            //UI_Transform.DOAnchorPos(DefaultPos, duration).SetEase(EaseEffect);
             onOff = false;
         }
     }
