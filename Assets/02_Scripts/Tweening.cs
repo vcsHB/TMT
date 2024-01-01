@@ -4,36 +4,22 @@ using System.Reflection;
 
 namespace UnityEngine.Tweening
 {
-    public enum EasingType
+    public static class  Tweening
     {
-        EaseInSine,    EaseOutSine,    EaseInOutSine,
-        EaseInCubic,   EaseOutCubic,   EaseInOutCubic,
-        EaseInQuint,   EaseOutQuint,   EaseInOutQuint,
-        EaseInCirc,    EaseOutCirc,    EaseInOutCirc,
-        EaseInElastic, EaseOutElastic, EaseInOutElastic,
-        EaseInQuad,    EaseOutQuad,    EaseInOutQuad,
-        EaseInQuart,   EaseOutQuart,   EaseInOutQuart,
-        EaseInExpo,    EaseOutExpo,    EaseInOutExpo, 
-        EaseInBack,    EaseOutBack,    EaseInOutBack,
-        EaseInBounce,  EaseOutBounce,  EaseInOutBounce
-    }
-    
-    public class  Tweening : MonoSingleton<Tweening>
-    {
-        public void DOMove(Transform transform, Vector3 endPoint, float duration, EasingType easing)
+        public static void DOMove(this Transform transform, Vector3 endPoint, float duration, EasingType easing)
         {
-            StartCoroutine(Move(transform, endPoint, duration, easing));
+            Move(transform, endPoint, duration, easing);
         }
-        public void DOMove(Transform transform, Vector3 endPoint, float duration, IEnumerator lateCoroutine, EasingType easing)
+        public static void DOMove(this Transform transform, Vector3 endPoint, float duration, IEnumerator lateCoroutine, EasingType easing)
         {
             StartCoroutine(Move(transform, endPoint, duration, lateCoroutine,easing));
         }
-        public void DOMove(Rigidbody rigidbody, Vector3 endPoint, float duration, EasingType easing)
+        public static void DOMove(this Rigidbody rigidbody, Vector3 endPoint, float duration, EasingType easing)
         {
             StartCoroutine(Move(rigidbody, endPoint, duration, easing));
         }
         
-        public void DOMove(Rigidbody rigidbody, Vector3 endPoint, float duration, IEnumerator lateCoroutine, EasingType easing)
+        public static void DOMove(this Rigidbody rigidbody, Vector3 endPoint, float duration, IEnumerator lateCoroutine, EasingType easing)
         {
             StartCoroutine(Move(rigidbody, endPoint, duration, lateCoroutine, easing));
         }
