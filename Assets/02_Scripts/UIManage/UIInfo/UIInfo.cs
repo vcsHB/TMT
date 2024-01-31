@@ -177,6 +177,7 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
 
     private void NullCheck()
     {
+        if (duration <= 0)
         {
             Debug.LogWarning("duration은 0보다 커야합니다.");
         }
