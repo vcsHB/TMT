@@ -12,6 +12,7 @@ public class UIInfoInspector : Editor
     private bool showUI = true;
     private bool showPos = true;
     private bool showButton = true;
+    private bool showColor = true;
     #endregion
     
     public override void OnInspectorGUI()
@@ -49,7 +50,7 @@ public class UIInfoInspector : Editor
         EditorGUILayout.BeginVertical();
         #region Property List
         // EditorGUILayout.Foldout : 접기/펼치기 버튼
-        showUI = EditorGUILayout.Foldout(showUI, "  \u25bc UI 정보", true, labelStyle);
+        showUI = EditorGUILayout.Foldout(showUI, "  \u25bc UI Information", true, labelStyle);
         if (showUI)
         {
             // EditorGUILayout.PropertyField(serializedObject.FindProperty("UIName")); // UIName 변수를 찾아서 PropertyField로 만들어줌
@@ -61,7 +62,7 @@ public class UIInfoInspector : Editor
         // EditorGUILayout.Space(10); : 10만큼 띄워줌
         EditorGUILayout.Space(10);
         
-        showPos = EditorGUILayout.Foldout(showPos, "  \u25bc UI 위치", true, labelStyle);
+        showPos = EditorGUILayout.Foldout(showPos, "  \u25bc UI PositionEffect", true, labelStyle);
         if (showPos)
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("DefaultPos"));
@@ -74,7 +75,27 @@ public class UIInfoInspector : Editor
         }
         EditorGUILayout.Space(10);
         
-        showButton = EditorGUILayout.Foldout(showButton, "  \u25bc 이벤트 입력 설정", true, labelStyle);
+        showColor = EditorGUILayout.Foldout(showColor, "  \u25bc UI ColorEffect", true, labelStyle);
+        if (showColor)
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("useColorEffect"));
+            serializedObject.ApplyModifiedProperties();
+            
+            if (uiInfo.useColorEffect)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("DefaultColor"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("TargetColor"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("ColorEffectDuration"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("ColorEaseEffect"));
+                EditorGUILayout.Space(10);
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("colorOnOff"));
+                serializedObject.ApplyModifiedProperties();
+            }
+        }
+
+        EditorGUILayout.Space(10);
+        
+        showButton = EditorGUILayout.Foldout(showButton, "  \u25bc UI Mouse Event", true, labelStyle);
         if (showButton)
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("isButton"));
