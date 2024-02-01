@@ -7,9 +7,9 @@
     UI Mouse Control
     
 - 1.1 : 
-    Inspector Design
+    Inspector GUI Design
 
 - 1.2 : 
     UI Color Effect Option
-    Inspector Refactoring
-    
+    UI Scale Effect Option 
+    Inspector Refactoring    

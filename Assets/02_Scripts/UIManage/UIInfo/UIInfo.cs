@@ -1,7 +1,5 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -21,6 +19,8 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
      */
     public RectTransform UI_Transform;
 
+    
+    public bool usePositionEffect = false;
     [Tooltip("처음 위치")]
     public Vector2 DefaultPos;
     [Tooltip("Move이벤트로 움직일 위치")]
@@ -31,6 +31,15 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     public Ease EaseEffect = Ease.Linear;
     [Tooltip("UI의 On/Off")]
     public bool onOff;
+    
+    public bool useScaleEffect = false;
+    [Tooltip("처음 스케일")]
+    public Vector3 DefaultScale = Vector3.one;
+    [Tooltip("변화할 스케일")]
+    public Vector3 TargetScale = Vector3.one;
+    public float ScaleEffectDuration = 0;
+    public Ease ScaleEaseEffect = Ease.Linear;
+    public bool scaleEffectOnOff;
 
     public bool useColorEffect = false;
     [Tooltip("처음 색")]
@@ -87,6 +96,10 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
      */
     public void MoveOn()
     {
+        if (!usePositionEffect)
+        {
+            return;
+        }
         if (!onOff)
         {
             UI_Transform.DOAnchorPos(TargetPos, duration).SetEase(EaseEffect);
@@ -101,6 +114,10 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
      */
     public void MoveOff()
     {
+        if (!usePositionEffect)
+        {
+            return;
+        }
         if (onOff)
         {
             UI_Transform.DOAnchorPos(DefaultPos, duration).SetEase(EaseEffect);
@@ -146,6 +163,32 @@ public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
         {
             UI_Transform.GetComponent<Image>().DOColor(DefaultColor, ColorEffectDuration).SetEase(ColorEaseEffect);
             colorOnOff = false;
+        }
+    }
+
+    public void OnScale()
+    {
+        if (!useScaleEffect)
+        {
+            return;
+        }
+        if (!scaleEffectOnOff)
+        {
+            UI_Transform.transform.DOScale(TargetScale, ScaleEffectDuration).SetEase(ScaleEaseEffect);
+            scaleEffectOnOff = true;
+        }
+    }
+
+    public void OffScale()
+    {
+        if (!useScaleEffect)
+        {
+            return;
+        }
+        if (scaleEffectOnOff)
+        {
+            UI_Transform.transform.DOScale(DefaultScale, ScaleEffectDuration).SetEase(ScaleEaseEffect);
+            scaleEffectOnOff = false;
         }
     }
     
