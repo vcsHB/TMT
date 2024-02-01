@@ -13,6 +13,7 @@ public class UIInfoInspector : Editor
     private bool showPos = true;
     private bool showButton = true;
     private bool showColor = true;
+    private bool showScale = true;
     #endregion
     
     public override void OnInspectorGUI()
@@ -65,15 +66,43 @@ public class UIInfoInspector : Editor
         showPos = EditorGUILayout.Foldout(showPos, "  \u25bc UI PositionEffect", true, labelStyle);
         if (showPos)
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("DefaultPos"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("TargetPos"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("EaseEffect"));
-            EditorGUILayout.Space(10);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("onOff"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("usePositionEffect"));
             serializedObject.ApplyModifiedProperties();
+
+            if (uiInfo.usePositionEffect)
+            {
+                
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("DefaultPos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("TargetPos"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("EaseEffect"));
+                EditorGUILayout.Space(10);
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("onOff"));
+                serializedObject.ApplyModifiedProperties();
+            }
         }
         EditorGUILayout.Space(10);
+        
+        showScale = EditorGUILayout.Foldout(showPos, "  \u25bc UI ScaleEffect", true, labelStyle);
+        if (showScale)
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("useScaleEffect"));
+            serializedObject.ApplyModifiedProperties();
+
+            if (uiInfo.useScaleEffect)
+            {
+                
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("DefaultScale"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("TargetScale"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("ScaleEffectDuration"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("ScaleEaseEffect"));
+                EditorGUILayout.Space(10);
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("scaleEffectOnOff"));
+                serializedObject.ApplyModifiedProperties();
+            }
+        }
+        EditorGUILayout.Space(10);
+
         
         showColor = EditorGUILayout.Foldout(showColor, "  \u25bc UI ColorEffect", true, labelStyle);
         if (showColor)
@@ -101,18 +130,19 @@ public class UIInfoInspector : Editor
             EditorGUILayout.PropertyField(serializedObject.FindProperty("isButton"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("isDetectMouse"));
             serializedObject.ApplyModifiedProperties();
-        }
-        EditorGUILayout.Space(10);
-        if (uiInfo.isButton)
-        {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("OnClick"));
-            serializedObject.ApplyModifiedProperties();
-        }
-        if (uiInfo.isDetectMouse)
-        {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("OnMouseEnter"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("OnMouseExit"));
-            serializedObject.ApplyModifiedProperties();
+            
+            EditorGUILayout.Space(10);
+            if (uiInfo.isButton)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("OnClick"));
+                serializedObject.ApplyModifiedProperties();
+            }
+            if (uiInfo.isDetectMouse)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("OnMouseEnter"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("OnMouseExit"));
+                serializedObject.ApplyModifiedProperties();
+            }
         }
         #endregion
         
