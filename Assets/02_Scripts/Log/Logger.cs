@@ -254,7 +254,7 @@ namespace Log
          */
         public static void FileLog(string message)
         {
-            string logFolderPath = Path.Combine(Application.persistentDataPath, "Logs");
+            string logFolderPath = Path.Combine(Application.dataPath, "Logs");
             string logFileName = $"log_{DateTime.Now:yyyyMMdd}.txt";
             string logFilePath = Path.Combine(logFolderPath, logFileName);
 

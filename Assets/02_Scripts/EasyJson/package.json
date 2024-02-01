@@ -1,0 +1,22 @@
+﻿{
+  "name": "com.leo82380.easyjson",
+  "version": "1.0.6",
+  "displayName" : "EasyJson",
+  "description" : "EasyJson은 유니티에서 쉽게 Json파일을 읽고 쓸 수 있게 도와주는 에셋입니다.",
+  "unity": "2021.3",
+  "documentationUrl" : "https://github.com/leo82380/EasyJson",
+  "hideInEditor" : false,
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json" : "3.0.1"
+  },
+  "keywords": [
+    "Json",
+    "EasyJson",
+    "Leo82380"
+  ],
+  "author": {
+    "name": "Leo82380",
+    "email": "tkdrb062@gmail.com",
+    "url": "https://github.com/leo82380"
+  }
+}
