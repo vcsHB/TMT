@@ -1,0 +1,15 @@
+# Update Logs #
+
+- 1.0 : 
+    UIInfo Basic Option
+    UI Position Effect
+    UI Button Control
+    UI Mouse Control
+    
+- 1.1 : 
+    Inspector GUI Design
+
+- 1.2 : 
+    UI Color Effect Option
+    UI Scale Effect Option 
+    Inspector Refactoring    
