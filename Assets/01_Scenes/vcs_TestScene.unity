@@ -488,13 +488,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIName: 
   UI_Transform: {fileID: 1567132474}
-  usePositionEffect: 0
+  usePositionEffect: 1
   DefaultPos: {x: 0, y: 0}
   TargetPos: {x: 0, y: 0}
   duration: 0
   EaseEffect: 1
   onOff: 0
-  useScaleEffect: 0
+  useScaleEffect: 1
   DefaultScale: {x: 1, y: 1, z: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   ScaleEffectDuration: 0
@@ -506,7 +506,7 @@ MonoBehaviour:
   ColorEffectDuration: 0.2
   colorOnOff: 0
   ColorEaseEffect: 1
-  isButton: 0
+  isButton: 1
   isDetectMouse: 1
   OnClick:
     m_PersistentCalls:
