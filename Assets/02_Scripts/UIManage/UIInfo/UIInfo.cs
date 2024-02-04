@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -48,9 +49,10 @@ namespace UIManage
         public bool isButton;
         public bool isDetectMouse;
 
-        [Header("Click Event")] public UnityEvent OnClick;
-        [Header("Mouse Event")] public UnityEvent OnMouseEnter;
-        public UnityEvent OnMouseExit;
+        [Header("Click Event")] public UISequence[] OnClick;
+        [Header("Mouse Event")] 
+        public UISequence[] OnMouseEnter;
+        public UISequence[] OnMouseExit;
 
 
         private void Awake()
@@ -196,7 +198,16 @@ namespace UIManage
         {
             if (isButton)
             {
-                OnClick?.Invoke();
+                StartCoroutine(OnClickSequenceRoutine());
+            }
+        }
+
+        private IEnumerator OnClickSequenceRoutine()
+        {
+            for (int i = 0; i < OnClick.Length; i++)
+            {
+                OnClick[i].indexedEvent?.Invoke();
+                yield return new WaitForSeconds(OnClick[i].beforeDelay);
             }
         }
 
@@ -205,7 +216,16 @@ namespace UIManage
         {
             if (isDetectMouse)
             {
-                OnMouseEnter?.Invoke();
+                StartCoroutine(OnMouseEnterSequenceRoutine());
+            }
+        }
+        
+        private IEnumerator OnMouseEnterSequenceRoutine()
+        {
+            for (int i = 0; i < OnMouseEnter.Length; i++)
+            {
+                OnMouseEnter[i].indexedEvent?.Invoke();
+                yield return new WaitForSeconds(OnMouseEnter[i].beforeDelay);
             }
         }
 
@@ -213,9 +233,19 @@ namespace UIManage
         {
             if (isDetectMouse)
             {
-                OnMouseExit?.Invoke();
+                StartCoroutine(OnMouseExitSequenceRoutine());
             }
         }
+        private IEnumerator OnMouseExitSequenceRoutine()
+        {
+            for (int i = 0; i < OnMouseExit.Length; i++)
+            {
+                yield return new WaitForSeconds(OnMouseExit[i].beforeDelay);
+
+                OnMouseExit[i].indexedEvent?.Invoke();
+            }
+        }
+
 
         private void NullCheck()
         {

@@ -11,8 +11,9 @@ namespace UIManage
     public struct ContentSegment
     {
         public TextContent[] contents;
-
+        
     }
+    
 
     public struct TextContent
     {
