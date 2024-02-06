@@ -488,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIName: 
   UI_Transform: {fileID: 1567132474}
-  usePositionEffect: 0
+  usePositionEffect: 1
   DefaultPos: {x: 0, y: 0}
   TargetPos: {x: 0, y: 0}
   duration: 0
@@ -506,41 +506,43 @@ MonoBehaviour:
   ColorEffectDuration: 0.2
   colorOnOff: 0
   ColorEaseEffect: 1
-  isButton: 0
+  isButton: 1
   isDetectMouse: 1
   OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-  OnMouseEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1567132475}
-        m_TargetAssemblyTypeName: UIInfo, Assembly-CSharp
-        m_MethodName: OnColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnMouseExit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1567132475}
-        m_TargetAssemblyTypeName: UIInfo, Assembly-CSharp
-        m_MethodName: OffColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  - beforeDelay: 0.5
+    indexedEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1567132475}
+          m_TargetAssemblyTypeName: UIManage.UIInfo, Assembly-CSharp
+          m_MethodName: OnColor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - beforeDelay: 0
+    indexedEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1567132475}
+          m_TargetAssemblyTypeName: UIManage.UIInfo, Assembly-CSharp
+          m_MethodName: OffColor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  OnMouseEnter: []
+  OnMouseExit: []
 --- !u!114 &1567132476
 MonoBehaviour:
   m_ObjectHideFlags: 0
