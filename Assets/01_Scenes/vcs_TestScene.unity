@@ -509,7 +509,8 @@ MonoBehaviour:
   isButton: 1
   isDetectMouse: 1
   OnClick:
-  - indexedEvent:
+  - beforeDelay: 0.5
+    indexedEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1567132475}
@@ -524,8 +525,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    beforeDelay: 0.5
-  - indexedEvent:
+  - beforeDelay: 0
+    indexedEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1567132475}
@@ -540,7 +541,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    beforeDelay: 0
   OnMouseEnter: []
   OnMouseExit: []
 --- !u!114 &1567132476
