@@ -7,7 +7,13 @@ using UnityEngine;
 
 namespace UIManage
 {
-
+    public enum ValueType
+    {
+        Int,
+        String,
+        Float,
+        
+    }
     public struct ContentSegment
     {
         public TextContent[] contents;
