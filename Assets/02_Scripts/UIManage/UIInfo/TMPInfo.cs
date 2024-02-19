@@ -39,8 +39,7 @@ namespace UIManage
         public static TextMeshProUGUI TMP;
 
 
-        [Tooltip("'$v' 로 content 중간중간에 ")] public string content;
-
+        [Tooltip("'$v' 로 content 중간중간에 삽입할 위치 표시")] public string content;
 
         public object[] insertValue;
 
@@ -57,6 +56,16 @@ namespace UIManage
                 Debug.Log(e);
                 Debug.Log("<color=red>[ TMPInfo ] 컴포넌트에 TMP가 없습니다 </color>");
                 throw;
+            }
+        }
+        
+        public void RefreshInsert(){
+            for (int i = 0; i < insertValue.Length; i++)
+            {
+                if (content.IndexOf("$v") != -1)
+                {
+                    
+                }
             }
         }
 
@@ -92,7 +101,7 @@ namespace UIManage
         }
 
         /**
-         * <summar>
+         * <summary>
          * Text 추가 작성 메서드,  Duration으로 출력할 시간을 입력 할 수 있다
          * </summary>
          */
