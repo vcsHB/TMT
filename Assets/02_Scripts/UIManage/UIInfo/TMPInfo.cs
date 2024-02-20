@@ -29,6 +29,15 @@ namespace UIManage
 
     }
 
+    public struct InsertContent
+    {
+        public ValueType valueType;
+        public int intValue;
+        public string stringValue;
+        public float floatValue;
+        public bool boolValue;
+    }
+
     /**
      * 이 클래스는 TextMeshProGUI를 다루는 2D용 TMP 스크립트임
      */
@@ -36,10 +45,10 @@ namespace UIManage
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TMPInfo : MonoBehaviour
     {
-        public static TextMeshProUGUI TMP;
+        public static TextMeshProUGUI _TMP;
 
 
-        [Tooltip("'$v' 로 content 중간중간에 삽입할 위치 표시")] public string content;
+        [Tooltip("'<$v>' 로 content 중간중간에 삽입할 위치 표시")] public string content;
 
         public object[] insertValue;
 
@@ -48,7 +57,7 @@ namespace UIManage
         {
             try
             {
-                TMP = GetComponent<TextMeshProUGUI>();
+                _TMP = GetComponent<TextMeshProUGUI>();
 
             }
             catch (Exception e)
@@ -59,14 +68,22 @@ namespace UIManage
             }
         }
         
-        public void RefreshInsert(){
+        public void RefreshInsert()
+        {
+            string insertedContent = content;
             for (int i = 0; i < insertValue.Length; i++)
             {
-                if (content.IndexOf("$v") != -1)
+                if (content.IndexOf("<$v>") != -1)
                 {
-                    
+                    insertedContent.Replace("<$v>", insertValue[i]);
+                }
+                else
+                {
+                    return;
                 }
             }
+            _TMP.text = 
+
         }
 
         /**
@@ -76,7 +93,7 @@ namespace UIManage
          */
         public void Write(string content)
         {
-            TMP.text = content;
+            _TMP.text = content;
         }
 
         /**
@@ -86,7 +103,7 @@ namespace UIManage
          */
         public void Write(string content, float duration)
         {
-            TMP.text = "";
+            _TMP.text = "";
             StartCoroutine(WriteRoutine(content, duration));
         }
 
@@ -97,7 +114,7 @@ namespace UIManage
          */
         public void AddWrite(string content)
         {
-            TMP.text += content;
+            _TMP.text += content;
         }
 
         /**
@@ -121,7 +138,7 @@ namespace UIManage
             float term = Mathf.Clamp(duration / content.Length, 0f, 10f);
             foreach (var word in content)
             {
-                TMP.text += word.ToString();
+                _TMP.text += word.ToString();
                 yield return new WaitForSeconds(term);
 
             }
