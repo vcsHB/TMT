@@ -82,7 +82,6 @@ namespace UIManage
                     return;
                 }
             }
-            _TMP.text = 
 
         }
 
