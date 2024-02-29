@@ -206,8 +206,9 @@ namespace UIManage
         {
             for (int i = 0; i < OnClick.Length; i++)
             {
-                OnClick[i].indexedEvent?.Invoke();
                 yield return new WaitForSeconds(OnClick[i].beforeDelay);
+
+                OnClick[i].indexedEvent?.Invoke();
             }
         }
 
@@ -224,8 +225,9 @@ namespace UIManage
         {
             for (int i = 0; i < OnMouseEnter.Length; i++)
             {
-                OnMouseEnter[i].indexedEvent?.Invoke();
                 yield return new WaitForSeconds(OnMouseEnter[i].beforeDelay);
+
+                OnMouseEnter[i].indexedEvent?.Invoke();
             }
         }
 
