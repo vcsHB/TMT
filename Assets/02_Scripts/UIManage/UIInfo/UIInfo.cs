@@ -251,12 +251,12 @@ namespace UIManage
         {
             if (duration <= 0)
             {
-                Debug.LogWarning("duration은 0보다 커야합니다.");
+                Debug.LogWarning(" duration은 0보다 커야합니다.");
             }
 
             if (UI_Transform == null)
             {
-                Debug.LogWarning("[] UI_Transform이 null입니다.");
+                Debug.LogWarning(" UI_Transform이 null입니다.");
 
                 // 설정해주지 않은 경우 본인 오브젝트로 지정
                 UI_Transform = transform.GetComponent<RectTransform>();

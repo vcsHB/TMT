@@ -7,7 +7,13 @@ using UnityEngine;
 
 namespace UIManage
 {
-
+    public enum ValueType
+    {
+        Int,
+        String,
+        Float,
+        
+    }
     public struct ContentSegment
     {
         public TextContent[] contents;
@@ -23,6 +29,15 @@ namespace UIManage
 
     }
 
+    public struct InsertContent
+    {
+        public ValueType valueType;
+        public int intValue;
+        public string stringValue;
+        public float floatValue;
+        public bool boolValue;
+    }
+
     /**
      * 이 클래스는 TextMeshProGUI를 다루는 2D용 TMP 스크립트임
      */
@@ -30,11 +45,10 @@ namespace UIManage
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TMPInfo : MonoBehaviour
     {
-        public static TextMeshProUGUI TMP;
+        public static TextMeshProUGUI _TMP;
 
 
-        [Tooltip("'$v' 로 content 중간중간에 ")] public string content;
-
+        [Tooltip("'<$v>' 로 content 중간중간에 삽입할 위치 표시")] public string content;
 
         public object[] insertValue;
 
@@ -43,7 +57,7 @@ namespace UIManage
         {
             try
             {
-                TMP = GetComponent<TextMeshProUGUI>();
+                _TMP = GetComponent<TextMeshProUGUI>();
 
             }
             catch (Exception e)
@@ -53,6 +67,23 @@ namespace UIManage
                 throw;
             }
         }
+        
+        public void RefreshInsert()
+        {
+            string insertedContent = content;
+            for (int i = 0; i < insertValue.Length; i++)
+            {
+                if (content.IndexOf("<$v>") != -1)
+                {
+                    //insertedContent.Replace("<$v>", InsertContent[i]);
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+        }
 
         /**
          * <summary>
@@ -61,7 +92,7 @@ namespace UIManage
          */
         public void Write(string content)
         {
-            TMP.text = content;
+            _TMP.text = content;
         }
 
         /**
@@ -71,7 +102,7 @@ namespace UIManage
          */
         public void Write(string content, float duration)
         {
-            TMP.text = "";
+            _TMP.text = "";
             StartCoroutine(WriteRoutine(content, duration));
         }
 
@@ -82,11 +113,11 @@ namespace UIManage
          */
         public void AddWrite(string content)
         {
-            TMP.text += content;
+            _TMP.text += content;
         }
 
         /**
-         * <summar>
+         * <summary>
          * Text 추가 작성 메서드,  Duration으로 출력할 시간을 입력 할 수 있다
          * </summary>
          */
@@ -106,7 +137,7 @@ namespace UIManage
             float term = Mathf.Clamp(duration / content.Length, 0f, 10f);
             foreach (var word in content)
             {
-                TMP.text += word.ToString();
+                _TMP.text += word.ToString();
                 yield return new WaitForSeconds(term);
 
             }
