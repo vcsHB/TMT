@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb53ddf5c83ab3249a2a32d8bcd382b0, type: 3}
+  m_Name: SimpleCharacterData
+  m_EditorClassIdentifier: 
+  characters:
+  - name: <user>
+    mainColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+    position: {x: 0, y: 0, z: 0}
+    sprites:
+      characterSpriteGroups: []
+  - name: "\uC2DC\uB85C\uCF54"
+    mainColor: {r: 0, g: 0.51996565, b: 1, a: 1}
+    position: {x: 0, y: 0, z: 0}
+    sprites:
+      characterSpriteGroups:
+      - characterState: 0
+        sprite: {fileID: 21300000, guid: 0fc6cba7a3f026d4490389372e4cf131, type: 3}
+      - characterState: 1
+        sprite: {fileID: 21300000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
+      - characterState: 2
+        sprite: {fileID: 21300000, guid: dcea51d6065d64246aeec467afeff684, type: 3}
+      - characterState: 4
+        sprite: {fileID: 21300000, guid: bb51334c6930f864abac38001f7bdf6e, type: 3}
+      - characterState: 9
+        sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
+  - name: "\uC544\uB8E8"
+    mainColor: {r: 0.8396226, g: 0.43301287, b: 0.5179092, a: 1}
+    position: {x: 0, y: 0, z: 0}
+    sprites:
+      characterSpriteGroups: []
