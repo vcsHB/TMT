@@ -75,7 +75,7 @@ namespace UIManage
             {
                 if (content.IndexOf("<$v>") != -1)
                 {
-                    insertedContent.Replace("<$v>", insertValue[i]);
+                    //insertedContent.Replace("<$v>", InsertContent[i]);
                 }
                 else
                 {
