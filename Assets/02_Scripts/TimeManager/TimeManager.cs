@@ -10,6 +10,7 @@ namespace TimeManage
         public static float GlobalTimeScale = 1;
         public static float UITimeScale = 1;
         const float DEFAULT_TIME_SCALE = 1;
+        
 
         public static void GlobalTimeStop()
         {
@@ -20,6 +21,11 @@ namespace TimeManage
         {
             UITimeScale = 0;
             
+        }
+        
+        public static void SetUITimeScaleDefault()
+        {
+            UITimeScale = DEFAULT_TIME_SCALE;
         }
 
         public static void SetGlobalTimeScaleDefault()

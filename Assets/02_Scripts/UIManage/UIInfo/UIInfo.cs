@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace UIManage
 {
 
-    public class UIInfo : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    public class UIInfo : Info, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         /**
          * <summary>
@@ -22,8 +22,6 @@ namespace UIManage
          * 움직일 UI RectTransform
          * </summary>
          */
-        public RectTransform UI_Transform;
-
 
         public bool usePositionEffect = false;
         [Tooltip("처음 위치")] public Vector2 DefaultPos;
@@ -73,12 +71,12 @@ namespace UIManage
 
             if (!onOff)
             {
-                UI_Transform.DOAnchorPos(TargetPos, duration);
+                UIRectObject.DOAnchorPos(TargetPos, duration);
                 onOff = true;
             }
             else
             {
-                UI_Transform.DOAnchorPos(DefaultPos, duration);
+                UIRectObject.DOAnchorPos(DefaultPos, duration);
                 onOff = false;
             }
         }
@@ -97,7 +95,7 @@ namespace UIManage
 
             if (!onOff)
             {
-                UI_Transform.DOAnchorPos(TargetPos, duration).SetEase(EaseEffect);
+                UIRectObject.DOAnchorPos(TargetPos, duration).SetEase(EaseEffect);
                 onOff = true;
             }
         }
@@ -116,7 +114,7 @@ namespace UIManage
 
             if (onOff)
             {
-                UI_Transform.DOAnchorPos(DefaultPos, duration).SetEase(EaseEffect);
+                UIRectObject.DOAnchorPos(DefaultPos, duration).SetEase(EaseEffect);
                 onOff = false;
             }
         }
@@ -146,7 +144,7 @@ namespace UIManage
 
             if (!colorOnOff)
             {
-                UI_Transform.GetComponent<Image>().DOColor(TargetColor, ColorEffectDuration).SetEase(ColorEaseEffect);
+                UIRectObject.GetComponent<Image>().DOColor(TargetColor, ColorEffectDuration).SetEase(ColorEaseEffect);
                 colorOnOff = true;
             }
         }
@@ -160,7 +158,7 @@ namespace UIManage
 
             if (colorOnOff)
             {
-                UI_Transform.GetComponent<Image>().DOColor(DefaultColor, ColorEffectDuration).SetEase(ColorEaseEffect);
+                UIRectObject.GetComponent<Image>().DOColor(DefaultColor, ColorEffectDuration).SetEase(ColorEaseEffect);
                 colorOnOff = false;
             }
         }
@@ -174,7 +172,7 @@ namespace UIManage
 
             if (!scaleEffectOnOff)
             {
-                UI_Transform.transform.DOScale(TargetScale, ScaleEffectDuration).SetEase(ScaleEaseEffect);
+                UIRectObject.transform.DOScale(TargetScale, ScaleEffectDuration).SetEase(ScaleEaseEffect);
                 scaleEffectOnOff = true;
             }
         }
@@ -188,7 +186,7 @@ namespace UIManage
 
             if (scaleEffectOnOff)
             {
-                UI_Transform.transform.DOScale(DefaultScale, ScaleEffectDuration).SetEase(ScaleEaseEffect);
+                UIRectObject.transform.DOScale(DefaultScale, ScaleEffectDuration).SetEase(ScaleEaseEffect);
                 scaleEffectOnOff = false;
             }
         }
@@ -206,8 +204,9 @@ namespace UIManage
         {
             for (int i = 0; i < OnClick.Length; i++)
             {
-                OnClick[i].indexedEvent?.Invoke();
                 yield return new WaitForSeconds(OnClick[i].beforeDelay);
+
+                OnClick[i].indexedEvent?.Invoke();
             }
         }
 
@@ -224,8 +223,9 @@ namespace UIManage
         {
             for (int i = 0; i < OnMouseEnter.Length; i++)
             {
-                OnMouseEnter[i].indexedEvent?.Invoke();
                 yield return new WaitForSeconds(OnMouseEnter[i].beforeDelay);
+
+                OnMouseEnter[i].indexedEvent?.Invoke();
             }
         }
 
@@ -254,12 +254,12 @@ namespace UIManage
                 Debug.LogWarning(" duration은 0보다 커야합니다.");
             }
 
-            if (UI_Transform == null)
+            if (UIRectObject == null)
             {
                 Debug.LogWarning(" UI_Transform이 null입니다.");
 
                 // 설정해주지 않은 경우 본인 오브젝트로 지정
-                UI_Transform = transform.GetComponent<RectTransform>();
+                UIRectObject = transform.GetComponent<RectTransform>();
             }
         }
     }
