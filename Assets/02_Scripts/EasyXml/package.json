@@ -1,0 +1,19 @@
+﻿{
+  "name": "com.leo82380.easyxml",
+  "version": "1.0.6",
+  "displayName" : "EasyXml",
+  "description" : "EasyXml은 유니티에서 쉽게 Xml파일을 읽고 쓸 수 있게 도와주는 에셋입니다.",
+  "unity": "2021.3",
+  "documentationUrl" : "https://github.com/leo82380/EasyXml",
+  "hideInEditor" : false,
+  "keywords": [
+    "Xml",
+    "EasyXml",
+    "Leo82380"
+  ],
+  "author": {
+    "name": "Leo82380",
+    "email": "tkdrb062@gmail.com",
+    "url": "https://github.com/leo82380"
+  }
+}
