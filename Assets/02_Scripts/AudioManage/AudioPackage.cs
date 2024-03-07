@@ -7,6 +7,7 @@ namespace AudioManage
     
     public class AudioPackage : ScriptableObject
     {
+        
         public string packageName;
         [Space(10)]
         public List<AudioCell> audioCells;

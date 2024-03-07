@@ -7,6 +7,8 @@ namespace AudioManage
     
     public class AudioManager : MonoBehaviour
     {
+        [SerializeField]
+        private float 
         // Start is called before the first frame update
         void Start()
         {
