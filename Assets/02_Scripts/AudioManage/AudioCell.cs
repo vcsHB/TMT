@@ -6,6 +6,7 @@ namespace AudioManage
 {
     [System.Serializable]
     [CreateAssetMenu(menuName = "SO/AudioManage/AudioCell")]
+    
     public class AudioCell : ScriptableObject
     {
         public int id;
