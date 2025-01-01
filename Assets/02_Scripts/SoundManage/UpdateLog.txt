@@ -1,9 +1,16 @@
-# UIInfo #
+# MINISound #
 # Script by 'vcs' #
 # Update Logs #
-
+=======================================================
 - 1.0 : 
     AudioPlay
     AudioPack
-    
+
+=======================================================
+- 2.0 :
+    RE NEW ALL
+        SoundPlayer PoolObject
+        SoundSO data Managing, Table
+
+=======================================================
     
